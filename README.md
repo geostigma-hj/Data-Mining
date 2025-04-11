@@ -8,7 +8,6 @@
 - `duplicate_user_id_detect.py`：use_id 重复率检测程序（详情介绍见实验报告）
 - `post_visulize.py`：可视化及高价值用户识别程序
 - `create_overview_analyse.py`：整体分析图绘制程序
-- `sample_1000.csv`：采样数据，用于初步分析
 - `processed_csv_10G/30G`：存储预处理结果
 - `result_imgs/result_imgs_30G`：存储可视化结果
 - `high_value_users/high_value_users_30G`：存储高价值目标用户信息
@@ -54,15 +53,15 @@ python post_visulize.py --size [10G/30G]
 python create_overview_analyse.py --size [10G/30G]
 ```
 
-该命令用于聚合上一步生成的图片（共计 15+2 张，前 15 张会被聚合，后 2 张分别存为 `income_credit_analysis.png` 和 `income_spending_analysis.png` ，用于分析用户收入与消费水平和信用评分之间的关系）
+该命令用于聚合上一步生成的图片（共计 15+2 张，前 15 张会被聚合到 `composed_overview_imgs` 文件夹中，后 2 张分别存为 `income_credit_analysis.png` 和 `income_spending_analysis.png` ，用于分析用户收入与消费水平和信用评分之间的关系）
 
 预览图如下（以10G数据集为例）：
 
-![综合分析图](overview_analysis1.png)
+![综合分析图](composed_overview_imgs/overview_analysis1.png)
 
 
 
-![综合分析图2](overview_analysis2.png)
+![综合分析图2](composed_overview_imgs/overview_analysis2.png)
 
 ⑤ **高价值用户二分类模型训练**
 
