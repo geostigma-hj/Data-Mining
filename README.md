@@ -84,4 +84,4 @@ python aggreate_result.py
 
 贴一张训练示例图：
 
-![训练示例图](predict_model\figures\Neural_Network_training_history.png)
+![训练示例图](predict_model/figures/Neural_Network_training_history.png)
