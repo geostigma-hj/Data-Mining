@@ -65,9 +65,9 @@ python data_process_pandas.py --size [10G/30G]
 ④ **数据可视化+高价值用户识别**
 
 ```bash
-python post_visulize.py --size [10G/30G]
+python post_visulize.py --size [10G/30G] --type [pandas/partial]
 ```
-
+> type 参数用于处理③中不同预处理方式得到的数据文件。pandas 表示处理纯 pandas 方式得到的单个预处理数据文件，partial 表示处理多 GPU 并行方式得到的多个预处理数据文件。
 数据分析可视化处理结果会保存到 `result_imgs/result_imgs_30G` 文件夹内；高价值目标用户筛选结果会保存到 `high_value_users[_30G]` 中（内含两个文件，csv 文件存储高价值用户具体信息，png 图片展示高价值用户可视化分布结果）
 
 ⑤ **可视化结果聚合（可选）**
