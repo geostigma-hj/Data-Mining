@@ -3,6 +3,7 @@ import json
 from collections import Counter
 import os
 import pyarrow.parquet as pq
+import argparse
 
 def count_categories(df):
     # 解析purchase_history列
@@ -55,7 +56,11 @@ def process_all_parquets(folder_path):
     return total_counter
 
 if __name__ == "__main__":
-    folder_path = "10G_data_new"
+    parser = argparse.ArgumentParser(description='处理不同规模的数据集')
+    parser.add_argument('--size', type=str, choices=['10G', '30G'], required=True, default="10G",
+                       help='指定要处理的数据集大小 (10G 或 30G)')
+    args = parser.parse_args()
+    folder_path = f"{args.size}_data_new"
     if not os.path.exists(folder_path):
         print(f"错误: 文件夹 {folder_path} 不存在")
     else:

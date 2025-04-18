@@ -10,10 +10,13 @@
 - `clear_sessions.sh`：用于清除 `multi_run.py` 运行后残余的会话窗口
 - `post_visulize.py`：可视化及高价值用户识别程序
 - `create_overview_analyse.py`：整体分析图绘制程序
+- `[10G/30G]_data_new`：原始数据集存储文件夹
 - `processed_csv_10G/30G`：存储预处理结果
 - `result_imgs/result_imgs_30G`：存储可视化结果
 - `high_value_users/high_value_users_30G`：存储高价值目标用户信息
 - `predict_model`：高价值用户分类模型相关（暂时不完善）
+
+> 该项目中所有原始数据文件以及代码运行过程中生成的数据文件均已删除，如需运行代码，请先自行填充原始数据到相关文件夹内。
 
 ### 2. 代码使用说明
 

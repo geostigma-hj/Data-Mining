@@ -2,16 +2,17 @@ import pandas as pd
 import pyarrow.parquet as pq
 import os
 import time
+import argparse
 
-def calculate_duplicate_ratio():
+def calculate_duplicate_ratio(args):
     try:
         # 读取并合并所有parquet文件
-        parquet_files = [f for f in os.listdir('10G_data_new') if f.endswith('.parquet')]
+        parquet_files = [f for f in os.listdir(f'{args.size}_data_new') if f.endswith('.parquet')]
         dfs = []
         print(f"开始处理 {len(parquet_files)} 个数据文件...")
         
         for file in parquet_files:
-            df = pq.ParquetFile(os.path.join('10G_data_new', file)).read().to_pandas()
+            df = pq.ParquetFile(os.path.join(f'{args.size}_data_new', file)).read().to_pandas()
             dfs.append(df)
         # 合并所有DataFrame
         combined_df = pd.concat(dfs, ignore_index=True)
@@ -39,7 +40,11 @@ def calculate_duplicate_ratio():
         print(f"处理文件时出错: {e}")
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='处理不同规模的数据集')
+    parser.add_argument('--size', type=str, choices=['10G', '30G'], required=True, default="10G",
+                       help='指定要处理的数据集大小 (10G 或 30G)')
+    args = parser.parse_args()
     start_time = time.time()
-    result = calculate_duplicate_ratio()
+    result = calculate_duplicate_ratio(args)
     end_time = time.time()
     print(f"\n程序执行时间: {end_time - start_time:.2f}秒")
