@@ -65,8 +65,11 @@ def load_data(file_path):
     print("原始数据NaN统计:")
     print(df.isna().sum())
     # 删除无关特征
-    drop_columns = ['user_id', 'purchase_count', 'timestamp_nunique', 
-                'rfm_score', 'hvc_segment', 'registration_date', 'last_purchase']
+    drop_columns = ['user_id', 'purchase_count',  'purchase_date_nunique',
+                'rfm_score', 'hvc_segment', 'registration_date', 'last_purchase', 'electronics_spend',
+                'automotive_spend', 'cloth_spend', 'home_office_spend',
+                'income_bin', 'age_group', 'income_group',
+                ]
     df = df.drop(columns=drop_columns)
     original_count = len(df)
     df = df.dropna()

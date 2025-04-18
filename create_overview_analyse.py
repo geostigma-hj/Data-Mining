@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import argparse  # 新增导入
+import os
 
 # 添加命令行参数解析
 parser = argparse.ArgumentParser(description='生成数据分析综合报告')
@@ -19,27 +20,27 @@ fig_combined1.suptitle('综合数据分析报告1', fontsize=24, y=1.02)
 for i, img_path in enumerate([
     '01_age_distribution.png',
     '02_category_distribution.png',
-    '03_country_distribution.png',
-    '04_income_credit_density.png',
-    '05_category_correlation.png',
-    '06_category_sales_distribution.png',
-    '07_inactive_user_distribution.png',
-    '08_total_spent_distribution.png',
-    '09_credit_score_distribution.png'
+    '03_category_sales_distribution.png',
+    '04_category_correlation.png',
+    '05_country_distribution.png',
+    '06_user_activity_comparison.png',
+    '07_total_spent_distribution.png',
+    '08_gender_activity_heatmap.png',
+    '09_age_activity_density.png'
 ]):
     if args.size == '10G':
-        img = plt.imread(f'result_imgs/{img_path}')
+        img = plt.imread(f'{os.getcwd()}/result_imgs/{img_path}')
     else:
-        img = plt.imread(f'result_imgs_30G/{img_path}')
+        img = plt.imread(f'{os.getcwd()}/result_imgs_30G/{img_path}')
     row, col = divmod(i, 3)
     axes[row, col].imshow(img)
     axes[row, col].axis('off')
 
 plt.tight_layout()
 if args.size == '10G':
-    fig_combined1.savefig('overview_analysis1.png', dpi=300, bbox_inches='tight')
+    fig_combined1.savefig(os.path.join(os.getcwd(),"composed_overview_imgs/overview_analysis1.png"), dpi=300, bbox_inches='tight')
 else:
-    fig_combined1.savefig('overview_analysis1_30G.png', dpi=300, bbox_inches='tight')
+    fig_combined1.savefig(os.path.join(os.getcwd(),"composed_overview_imgs/overview_analysis1_30G.png"), dpi=300, bbox_inches='tight')
 plt.close(fig_combined1)
 
 # 创建综合图2
@@ -56,9 +57,9 @@ for i, img_path in enumerate([
     '15_gender_distribution.png'
 ]):
     if args.size == '10G':
-        img = plt.imread(f'result_imgs/{img_path}')
+        img = plt.imread(f'{os.getcwd()}/result_imgs/{img_path}')
     else:
-        img = plt.imread(f'result_imgs_30G/{img_path}')
+        img = plt.imread(f'{os.getcwd()}/result_imgs_30G/{img_path}')
     row, col = divmod(i, 2)
     axes[row, col].imshow(img)
     axes[row, col].axis('off')
@@ -66,7 +67,7 @@ for i, img_path in enumerate([
 
 plt.tight_layout()
 if args.size == '10G':
-    fig_combined2.savefig('overview_analysis2.png', dpi=300, bbox_inches='tight')
+    fig_combined2.savefig(os.path.join(os.getcwd(),'composed_overview_imgs/overview_analysis2.png'), dpi=300, bbox_inches='tight')
 else:
-    fig_combined2.savefig('overview_analysis2_30G.png', dpi=300, bbox_inches='tight')
+    fig_combined2.savefig(os.path.join(os.getcwd(),'composed_overview_imgs/overview_analysis2_30G.png'), dpi=300, bbox_inches='tight')
 plt.close(fig_combined2)

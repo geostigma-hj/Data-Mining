@@ -68,10 +68,9 @@ def main(size):
     y = df['label'].values
     X = df.drop(columns=['label'])
     # 定义特征类型
-    num_features = ['total_spent', 'avg_transaction',
-                    'total_items', 'age', 'income', 'credit_score_mean',
+    num_features = ['total_spent','total_items', 'income', 'active_score',
                     'recency_days', 'membership_days', 'purchase_freq']
-    cat_features = ['gender', 'country']
+    cat_features = []
     
     # 创建预处理管道
     preprocessor = create_preprocessor(num_features, cat_features)
